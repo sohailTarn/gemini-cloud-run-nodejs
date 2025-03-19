@@ -31,3 +31,4 @@ steps:
     - '300s'
 
 images: ['gcr.io/tarnapi/document-qa-service:latest']
+logsBucket: 'gs://poliseeai-cloudbuild-logs' # Add this line
