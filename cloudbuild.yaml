@@ -7,4 +7,27 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/tarnapi/document-qa-service:latest']
 
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google-cloud-sdk'
+    entrypoint: gcloud
+    args:
+    - 'run'
+    - 'deploy'
+    - 'document-qa-service'
+    - '--image'
+    - 'gcr.io/tarnapi/document-qa-service:latest'
+    - '--platform'
+    - 'managed'
+    - '--region'
+    - 'us-central1'
+    - '--allow-unauthenticated'
+    - '--memory'
+    - '4Gi'
+    - '--cpu'
+    - '2'
+    - '--set-env-vars'
+    - 'PROJECT_ID=tarnapi'
+    - '--timeout'
+    - '300s'
+
 images: ['gcr.io/tarnapi/document-qa-service:latest']
