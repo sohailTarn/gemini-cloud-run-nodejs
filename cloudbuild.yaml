@@ -1,0 +1,10 @@
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/tarnapi/document-qa-service:latest', '.']
+
+  # Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/tarnapi/document-qa-service:latest']
+
+images: ['gcr.io/tarnapi/document-qa-service:latest']
